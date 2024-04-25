@@ -14,7 +14,7 @@ class LevelModel extends Model
     protected  $table = "m_level";
     protected $primaryKey = "level_id";
 
-    public function level(): HasMany
+    public function user(): HasMany
     {
         return $this->hasMany(User::class);
     }

@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('title', 'Dashboard')
 @section('content_header')
-<h1>Add User</h1>@stop
+<h1>Add Level</h1>@stop
 
 @section('content')
 
@@ -10,16 +10,10 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label>Username</label><input type="text" class="form-control" placeholder="Enter Username">
+                    <label>Level Code</label><input type="text" class="form-control" placeholder="Enter Code">
                 </div>
                 <div class="form-group">
-                    <label>Nama</label><input type="text" class="form-control" placeholder="Enter Name">
-                </div>
-                <div class="form-group">
-                    <label>Password</label><input type="text" class="form-control" placeholder="Enter Password">
-                </div>
-                <div class="form-group">
-                    <label>ID Level</label><input type="text" class="form-control" placeholder="Enter ID Level">
+                    <label>Level Nama</label><input type="text" class="form-control" placeholder="Enter Name">
                 </div>
                 <button type="submit" class="btn btn-info">Submit </button></div>
                 @stop

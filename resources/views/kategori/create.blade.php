@@ -9,7 +9,7 @@
     <div class="container">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Buat Kategori Baru</h3>
+                <h3 class="card-title">Buat Kategori Baruw</h3>
                 <form method="post" action="../kategori">
                 </div>
                     <div class="card-body">
@@ -24,8 +24,17 @@
                             <input type="text" class="form-control" name="namaKategori" id="NamaKategori"
                                 placeholder="Nama Kategori">
                         </div>
-
                     </div>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>

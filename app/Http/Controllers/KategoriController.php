@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\KategoriModel;
-use Illuminate\Http\Request;
-use App\DataTables\KategoriDataTable;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;  // Use Redirect facade for cleaner redirects
+use App\Models\KategoriModel;
+use App\Http\Requests\StoreKategoriRequest; // Assuming you have a StoreKategoriRequest class for validation
+use App\DataTables\KategoriDataTable;
 
 class KategoriController extends Controller
 {
@@ -18,35 +20,36 @@ class KategoriController extends Controller
         return view('kategori.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreKategoriRequest $request) // Use validated request for data
     {
-        KategoriModel::create([
-            'kategori_kode' => $request->kodeKategori,
-            'kategori_nama' => $request->namaKategori,
-        ]);
-        return redirect('/kategori');
+        $validated = $request->validated(); // Perform validation using the request class
 
+        KategoriModel::create($validated);
+
+        return Redirect::route('kategori.index'); // Use named route for redirect
 
     }
 
-    public function update($id){
-        $data = KategoriModel::find($id);
-        return view('kategori.update' , ['kategori'=> $data]);
+    public function update($id)
+    {
+        $data = KategoriModel::findOrFail($id); // Use findOrFail for better error handling
+        return view('kategori.create', ['kategori' => $data]);
     }
 
-    public function update_save(Request $request, $id){
-        $data = KategoriModel::find($id);
-        $data->kategori_kode = $request->kodeKategori;
-        $data->kategori_nama = $request->namaKategori;
-        $data->save();
+    public function ubah_simpan(Request $request, $id)
+    {
+        $data = KategoriModel::findOrFail($id);
 
-        return redirect('/kategori');
+        $data->update($request->all()); // Update using all validated data
+
+        return Redirect::route('kategori.index');
     }
 
-    public function delete($id){
-        $data = KategoriModel::find($id);
+    public function delete($id)
+    {
+        $data = KategoriModel::findOrFail($id);
         $data->delete();
 
-        return redirect('/kategori');
+        return Redirect::route('kategori.index');
     }
 }
