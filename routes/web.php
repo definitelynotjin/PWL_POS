@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
@@ -47,3 +48,20 @@ Route::resource('m_user', POSController::class);
 Route::get('kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
 Route::get('kategori/update_save/{id}', [KategoriController::class, 'update_save'])->name('kategori.update_save');
 Route::get('kategori/delete/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
+
+
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
+Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('proses_register', [AuthController::class, 'proses_register'])->name('proses_register');
+
+Route::group(['middleware' => ['auth']], function (){
+    Route::group(['middeware' => ['cek_login:1']], function (){
+        Route::resource('admin', AdminController::class);
+    });
+    Route::group(['middeware' => ['cek_login:1']], function (){
+        Route::resource('admin', AdminController::class);
+    });
+
+});

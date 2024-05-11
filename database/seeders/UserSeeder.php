@@ -62,7 +62,7 @@ class UserSeeder extends Seeder
             [
                 'user_id' => 7,
                 'level_id' => 3,
-                'username' => 'adminnn',
+                'username' => 'adminnn@gmail.com',
                 'nama' => 'Administrator',
                 'password' => Hash::make('12345'),
             ],
