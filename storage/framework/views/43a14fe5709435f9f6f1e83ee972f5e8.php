@@ -142,3 +142,4 @@
     </ul>
 </nav>
 <!-- /.navbar -->
+<?php /**PATH C:\laragon\www\PWL_POS\resources\views/layouts/header.blade.php ENDPATH**/ ?>

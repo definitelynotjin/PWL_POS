@@ -4,11 +4,14 @@
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\DataTables\KategoriDataTable;
 use App\Http\Controllers\POSController;
+use App\Http\Controllers\WelcomeController;
 use App\Models\KategoriModel;
 
 
@@ -23,9 +26,10 @@ use App\Models\KategoriModel;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [WelcomeController::class, 'index']);
+
+
 
 Route::get('/level', [LevelController::class, 'index']);
 // Route::get('/category', [CategoryController::class, 'index']);
@@ -50,18 +54,20 @@ Route::get('kategori/update_save/{id}', [KategoriController::class, 'update_save
 Route::get('kategori/delete/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
 
 
+
+
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
-Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('proses_register', [AuthController::class, 'proses_register'])->name('proses_register');
 
 Route::group(['middleware' => ['auth']], function (){
     Route::group(['middeware' => ['cek_login:1']], function (){
         Route::resource('admin', AdminController::class);
     });
-    Route::group(['middeware' => ['cek_login:1']], function (){
-        Route::resource('admin', AdminController::class);
+    Route::group(['middeware' => ['cek_login:2']], function (){
+        Route::resource('manager', ManagerController::class);
     });
 
 });

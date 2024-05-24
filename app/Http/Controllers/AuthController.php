@@ -25,12 +25,12 @@ class AuthController extends Controller
         if ($user) {
             switch ($user->level_id) {
                 case '1':
-                    return redirect()->intended('admin');
+                    return redirect()->intended('/admin');
                 case '2':
-                    return redirect()->intended('manager');
+                    return redirect()->intended('/manager');
             }
         }
-        return view('login');
+        return view('auth.login');
     }
 
     /**

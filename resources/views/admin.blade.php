@@ -1,4 +1,4 @@
-@extends('layout.template')
+@extends('layouts.template')
 
 @section('subtitle', 'Admin')
 @section('content_header_title', 'Home')
@@ -9,6 +9,7 @@
         <div class="card">
             <div class="card-header">Tampilan {{Auth::user()->level_id == 1 ? 'Admin' : 'Manager'}}
             </div>
+
             <div class="card-body">
                 <h1>Login Sebagai:
                     {{Auth::user()->level_id == 1 ? 'Admin' : 'Manager'}}

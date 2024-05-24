@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             [
                 'user_id' => 1,
                 'level_id' => 1,
-                'username' => 'admin',
+                'username' => 'adminaja',
                 'nama' => 'Administrator',
                 'password' => Hash::make('12345'),
             ],
@@ -45,13 +45,7 @@ class UserSeeder extends Seeder
                 'nama' => 'Administrator',
                 'password' => Hash::make('12345'),
             ],
-            [
-                'user_id' => 5,
-                'level_id' => 1,
-                'username' => 'managerr',
-                'nama' => 'Manager',
-                'password' => Hash::make('12345'),
-            ],
+
             [
                 'user_id' => 6,
                 'level_id' => 2,
@@ -62,14 +56,14 @@ class UserSeeder extends Seeder
             [
                 'user_id' => 7,
                 'level_id' => 3,
-                'username' => 'adminnn@gmail.com',
+                'username' => 'www ',
                 'nama' => 'Administrator',
                 'password' => Hash::make('12345'),
             ],
             [
                 'user_id' => 8,
-                'level_id' => 1,
-                'username' => 'managerrr',
+                'level_id' => 2,
+                'username' => 'managerawr',
                 'nama' => 'Manager',
                 'password' => Hash::make('12345'),
             ],
