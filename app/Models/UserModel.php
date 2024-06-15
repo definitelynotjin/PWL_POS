@@ -2,32 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class UserModel extends Authenticatable implements JWTSubject
+class UserModel extends Model implements AuthenticatableContract, JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Authenticatable;
 
     protected $table = 'm_user';
-    public $timestamps = false;
     protected $primaryKey = 'user_id';
 
     protected $fillable = [
-        'user_id',
         'level_id',
         'username',
         'nama',
         'password',
     ];
-
-    public function level()
-    {
-        return $this->hasOne(LevelModel::class, 'level_id', 'level_id');
-    }
 
     public function getJWTIdentifier()
     {
@@ -37,5 +30,9 @@ class UserModel extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function level() {
+        return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     }
 }

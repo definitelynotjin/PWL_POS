@@ -4,10 +4,10 @@
 @php( $register_url = View::getSection('register_url') ?? config('adminlte.register_url', 'register') )
 
 @if (config('adminlte.use_route_url', false))
-    @php( $login_url = $login_url ? route($login_url) : '')
+    @php( $login_url = $login_url ? route($login_url) : '' )
     @php( $register_url = $register_url ? route($register_url) : '' )
 @else
-    @php( $login_url = $login_url ? url($login_url) : '')
+    @php( $login_url = $login_url ? url($login_url) : '' )
     @php( $register_url = $register_url ? url($register_url) : '' )
 @endif
 
@@ -16,7 +16,7 @@
 @section('auth_body')
     <form action="{{ route('proses_register') }}" method="post">
         @csrf
-        {{-- Nama field --}}
+
         <div class="input-group mb-3">
             <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
                    value="{{ old('nama') }}" placeholder="Nama" autofocus>
@@ -32,7 +32,6 @@
             @enderror
         </div>
 
-        {{-- Username field --}}
         <div class="input-group mb-3">
             <input type="text" name="username" class="form-control @error('username') is-invalid @enderror"
                    value="{{ old('username') }}" placeholder="Username" autofocus>
@@ -48,7 +47,6 @@
             @enderror
         </div>
 
-        {{-- Password field --}}
         <div class="input-group mb-3">
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                    placeholder="{{ __('adminlte::adminlte.password') }}">
@@ -64,9 +62,7 @@
             @enderror
         </div>
 
-        {{-- Register button --}}
-        <button type="submit"
-                class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
+        <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
             <span class="fas fa-user-plus"></span>
             {{ __('adminlte::adminlte.register') }}
         </button>
@@ -75,7 +71,7 @@
 
 @section('auth_footer')
     <p class="my-0">
-        <a href="{{ route('login') }}">
+        <a href="{{ $login_url }}">
             {{ __('adminlte::adminlte.i_already_have_a_membership') }}
         </a>
     </p>
