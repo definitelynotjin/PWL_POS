@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Http\Controllers\LevelController;
+use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -73,19 +73,19 @@ use App\Models\KategoriModel;
 
 Route::get('/', [WelcomeController::class, 'index']);
 
-Route::get('/level', [LevelController::class, 'index']);
-Route::get('/user', [UserController::class, 'index'])->name('user.index');
-Route::get('/user/tambah', [UserController::class, 'tambah'])->name('user.tambah');
-Route::get('/level/tambah', [LevelController::class, 'tambah'])->name('level.tambah');
-Route::get('/user/ubah/{id}', [UserController::class, 'ubah'])->name('user.ubah');
-Route::get('/user/hapus/{id}', [UserController::class, 'hapus'])->name('user.hapus');
-Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan'])->name('user.tambah_simpan');
-Route::post('/level/tambah_simpan', [LevelController::class, 'tambah_simpan'])->name('level.tambah_simpan');
-Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan'])->name('user.ubah_simpan');
-Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
-Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
-Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/level', [LevelController::class, 'index']);
+// Route::get('/user', [UserController::class, 'index'])->name('user.index');
+// Route::get('/user/tambah', [UserController::class, 'tambah'])->name('user.tambah');
+// Route::get('/level/tambah', [LevelController::class, 'tambah'])->name('level.tambah');
+// Route::get('/user/ubah/{id}', [UserController::class, 'ubah'])->name('user.ubah');
+// Route::get('/user/hapus/{id}', [UserController::class, 'hapus'])->name('user.hapus');
+// Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan'])->name('user.tambah_simpan');
+// Route::post('/level/tambah_simpan', [LevelController::class, 'tambah_simpan'])->name('level.tambah_simpan');
+// Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan'])->name('user.ubah_simpan');
+// Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
+// Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
+// Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('m_user', POSController::class);
 
